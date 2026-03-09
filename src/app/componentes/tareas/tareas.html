@@ -1,5 +1,14 @@
-<article class="panel-info">
-    @if (colaborador()) {
-    <h2>{{ colaborador()!.nombre }}</h2>
-    }
-</article>
+<section id="tareas">
+    <header>
+        <h2>Tareas de {{ nombre }}</h2>
+        <menu>
+            <button>Agregar Tarea Nueva</button>
+        </menu>
+    </header>
+
+    <ul>
+        <li>
+            <app-tarea />
+        </li>
+    </ul>
+</section>

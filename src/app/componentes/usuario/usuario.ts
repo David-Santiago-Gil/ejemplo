@@ -1,20 +1,28 @@
-import { Component, input, output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Colaborador } from '../../usuarios-falsos';
+import { Component, computed, EventEmitter, Input, input, Output } from '@angular/core';
+
+interface Usuarios {
+    id: string;
+    avatar: string;
+    nombre: string;
+}
 
 @Component({
     selector: 'app-usuario',
-    standalone: true,
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './usuario.html',
     styleUrl: './usuario.css',
 })
-export class UsuarioComponent {
-    lista = input.required<Colaborador[]>();
-    activo = input<Colaborador | null>(null);
-    seleccion = output<Colaborador>();
+export class Usuario {
 
-    onSelectUser(colaborador: Colaborador): void {
-        this.seleccion.emit(colaborador);
+    @Input({ required: true }) usuario!: Usuarios;
+
+    @Output() seleccion = new EventEmitter();
+
+    get rutaImagen() {
+        return 'img/' + this.usuario.avatar;
+    }
+
+    alSeleccionarUsuario() {
+        this.seleccion.emit(this.usuario.id);
     }
 }

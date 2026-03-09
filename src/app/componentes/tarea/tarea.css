@@ -1,0 +1,48 @@
+article {
+    padding: 1rem;
+    color: #3d5168;
+    background-color: #c9a5dd;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+time {
+    margin: 0;
+    padding: 0;
+    font-size: 0.75rem;
+    color: #4488ff;
+    display: block;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.8rem;
+    background-color: #3d2150;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    width: 10rem;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #4a2a5f;
+}
+
+.active {
+    background-color: #3d5168dd;
+}
+
+p {
+    color: #3d5168;
+}
+

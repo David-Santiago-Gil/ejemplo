@@ -1,20 +1,25 @@
-import { Component } from '@angular/core';
-import { EncabezadoComponent } from './componentes/encabezado/encabezado';
-import { UsuarioComponent } from './componentes/usuario/usuario';
-import { TareasComponent } from './componentes/tareas/tareas';
-import { Colaborador, LISTA_COLABORADORES } from './usuarios-falsos';
+import { Component, signal } from '@angular/core';
+import { Encabezado } from './componentes/encabezado/encabezado';
+import { Usuario } from './componentes/usuario/usuario';
+import { USUARIOS_FALSOS } from './usuarios-falsos';
+import { Tareas } from './componentes/tareas/tareas';
 
 @Component({
   selector: 'app-root',
-  imports: [EncabezadoComponent, UsuarioComponent, TareasComponent],
+  imports: [Encabezado, Usuario, Tareas],
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  styleUrl: './app.css'
 })
 export class App {
-  colaboradores: Colaborador[] = LISTA_COLABORADORES;
-  colaboradorActual: Colaborador | null = this.colaboradores[0];
+  protected readonly title = signal('proyecto_inicial');
+  usuarios = USUARIOS_FALSOS;
+  idUsuarioSeleccionado?: string;
 
-  asignarColaborador(colaborador: Colaborador): void {
-    this.colaboradorActual = colaborador;
+  get usuarioSeleccionado() {
+    return this.usuarios.find((usuario) => usuario.id === this.idUsuarioSeleccionado);
+  }
+
+  alSeleccionarUsuario(id: string) {
+    this.idUsuarioSeleccionado = id;
   }
 }

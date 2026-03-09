@@ -1,14 +1,17 @@
-<main class="contenedor-app">
-    <!-- ENCABEZADO -->
-    <app-encabezado></app-encabezado>
+<app-encabezado />
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <section class="area-contenido">
-        <!-- LADO IZQUIERDO: USUARIOS -->
-        <app-usuario [lista]="colaboradores" [activo]="colaboradorActual"
-            (seleccion)="asignarColaborador($event)"></app-usuario>
+<main>
+    <ul id="usuarios">
+        @for (usuario of usuarios; track usuario.id) {
+        <li>
+            <app-usuario [usuario]="usuario" (seleccion)="alSeleccionarUsuario($event)" />
+        </li>
+        }
+    </ul>
 
-        <!-- LADO DERECHO: TAREAS -->
-        <app-tareas [colaborador]="colaboradorActual"></app-tareas>
-    </section>
+    @if (usuarioSeleccionado) {
+    <app-tareas [nombre]="usuarioSeleccionado.nombre" />
+    } @else {
+    <p id="textoCondicional">Selecciona un usuario de la lista</p>
+    }
 </main>

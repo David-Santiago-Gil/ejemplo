@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-encabezado',
-    standalone: true,
+    imports: [],
     templateUrl: './encabezado.html',
     styleUrl: './encabezado.css',
 })
-export class EncabezadoComponent { }
+export class Encabezado { }
